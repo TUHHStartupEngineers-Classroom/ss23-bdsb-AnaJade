@@ -1,10 +1,24 @@
 [
   {
-    "objectID": "content/03_other/06_links.html",
-    "href": "content/03_other/06_links.html",
-    "title": "Links",
+    "objectID": "content/01_journal/01_tidyverse.html",
+    "href": "content/01_journal/01_tidyverse.html",
+    "title": "Tidyverse",
     "section": "",
-    "text": "R is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, and lots of other stuff. Another free program is R-studio, that provides a nice graphic interface for R. Download R first, then download R-studio. Both can run on PCs, Macs or Linux. Students will be learning R in the stats labs using the lab manual .\n\n\n\n\nGoogle is great, Google your problem\nStackoverflow is great, google will often take you there because someone has already asked your question, and someone else has answered, usually many people have answered your question many ways."
+    "text": "The goal of this first challenge is to analyze the sales per state and per year, per state. This page will explain how this analysis was done."
+  },
+  {
+    "objectID": "content/01_journal/01_tidyverse.html#header-2",
+    "href": "content/01_journal/01_tidyverse.html#header-2",
+    "title": "Tidyverse",
+    "section": "2.1 Header 2",
+    "text": "2.1 Header 2\n\nHeader 3\n\nHeader 4\n\nHeader 5\n\nHeader 6"
+  },
+  {
+    "objectID": "content/01_journal/02_data_acquisition.html",
+    "href": "content/01_journal/02_data_acquisition.html",
+    "title": "Data Acquisition",
+    "section": "",
+    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
   },
   {
     "objectID": "content/01_journal/03_data_wrangling.html",
@@ -21,32 +35,18 @@
     "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
   },
   {
-    "objectID": "content/01_journal/01_tidyverse.html",
-    "href": "content/01_journal/01_tidyverse.html",
-    "title": "Tidyverse",
-    "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh.\nThis is a .qmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
-  },
-  {
-    "objectID": "content/01_journal/01_tidyverse.html#header-2",
-    "href": "content/01_journal/01_tidyverse.html#header-2",
-    "title": "Tidyverse",
-    "section": "\n2.1 Header 2",
-    "text": "2.1 Header 2\nHeader 3\nHeader 4\nHeader 5\nHeader 6"
-  },
-  {
-    "objectID": "content/01_journal/02_data_acquisition.html",
-    "href": "content/01_journal/02_data_acquisition.html",
-    "title": "Data Acquisition",
-    "section": "",
-    "text": "Note\n\n\n\nYou can delete everything in here and start fresh."
-  },
-  {
     "objectID": "content/02_notes/05_class_notes.html",
     "href": "content/02_notes/05_class_notes.html",
     "title": "Class Notes",
     "section": "",
     "text": "IMPORTANT: You can delete everything in here and start fresh. You might want to start by not deleting anything above this line until you know what that stuff is doing.\nThis is an .qmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header."
+  },
+  {
+    "objectID": "content/03_other/06_links.html",
+    "href": "content/03_other/06_links.html",
+    "title": "Links",
+    "section": "",
+    "text": "R is a free open-source programming language that can be used for statistical analysis, data-simulation, graphing, and lots of other stuff. Another free program is R-studio, that provides a nice graphic interface for R. Download R first, then download R-studio. Both can run on PCs, Macs or Linux. Students will be learning R in the stats labs using the lab manual .\n\n\n\n\nGoogle is great, Google your problem\nStackoverflow is great, google will often take you there because someone has already asked your question, and someone else has answered, usually many people have answered your question many ways."
   },
   {
     "objectID": "index.html",
@@ -61,5 +61,47 @@
     "title": "My Lab Journal",
     "section": "How to use",
     "text": "How to use\n\nAccept the assignment and get your own github repo.\nBlog/journal what you are doing in R, by editing the .qmd files.\nSee the links page for lots of helpful links on learning R.\nChange everything to make it your own.\nMake sure to render you website everytime before you want to upload changes"
+  },
+  {
+    "objectID": "content/01_journal/01_tidyverse_copy.html",
+    "href": "content/01_journal/01_tidyverse_copy.html",
+    "title": "Tidyverse",
+    "section": "",
+    "text": "Note\n\n\n\nYou can delete everything in here and start fresh.\nThis is a .qmd file. It is plain text with special features. Any time you write just like this, it will be compiled to normal text in the website. If you put a # in front of your text, it will create a top level-header.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "content/01_journal/01_tidyverse_copy.html#header-2",
+    "href": "content/01_journal/01_tidyverse_copy.html#header-2",
+    "title": "Tidyverse",
+    "section": "\n2.1 Header 2",
+    "text": "2.1 Header 2\nHeader 3\nHeader 4\nHeader 5\nHeader 6"
+  },
+  {
+    "objectID": "content/01_journal/01_tidyverse.html#manipulate",
+    "href": "content/01_journal/01_tidyverse.html#manipulate",
+    "title": "Tidyverse",
+    "section": "\n5.1 Manipulate",
+    "text": "5.1 Manipulate\n\nsales_by_state_tbl <- bike_orderlines_wrangled_tbl %>%\n  # Keep state and total_price columns\n  select(state, total_price) %>%\n  # Group by state (kinda like sort)\n  group_by(state) %>% \n  # Sum sales per state\n  summarize(sales = sum(total_price)) %>%\n  # Convert the column into the currency format\n  mutate(sales_text = scales::dollar(sales, big.mark = \".\", \n                                     decimal.mark = \",\", \n                                     prefix = \"\", \n                                     suffix = \" €\"))\nsales_by_state_tbl"
+  },
+  {
+    "objectID": "content/01_journal/01_tidyverse.html#manipulate-1",
+    "href": "content/01_journal/01_tidyverse.html#manipulate-1",
+    "title": "Tidyverse",
+    "section": "\n6.1 Manipulate",
+    "text": "6.1 Manipulate\n\nsales_by_state_year_tbl <- bike_orderlines_wrangled_tbl %>%\n  \n  # Select state, date and total price columns + add a year\n  select(order_date, state, total_price) %>%\n  mutate(year = year(order_date)) %>%\n  \n  # Group by and summarize year and main catgegory\n  group_by(year, state) %>%\n  summarise(sales = sum(total_price)) %>%\n  ungroup() %>%\n  \n  # Format $ Text\n  mutate(sales_text = scales::dollar(sales, big.mark = \".\", \n                                     decimal.mark = \",\", \n                                     prefix = \"\", \n                                     suffix = \" €\"))\n\n#> `summarise()` has grouped output by 'year'. You can override using the\n#> `.groups` argument.\n\nsales_by_state_year_tbl"
+  },
+  {
+    "objectID": "content/01_journal/01_tidyverse.html#visualize",
+    "href": "content/01_journal/01_tidyverse.html#visualize",
+    "title": "Tidyverse",
+    "section": "\n5.2 Visualize",
+    "text": "5.2 Visualize\n\nsales_by_state_tbl %>%\n  \n  # Plot with sales(year)\n  ggplot(aes(x = state, y = sales)) +\n  \n  # Geometries\n  geom_col(fill = \"#2DC6D6\") + # Use geom_col for a bar plot\n  geom_label(aes(label = sales_text)) + # Adding labels to the bars\n  \n  # Formatting\n  # Adjust from $ to €\n  scale_y_continuous(labels = scales::dollar_format(big.mark = \".\", \n                                                    decimal.mark = \",\", \n                                                    prefix = \"\", \n                                                    suffix = \" €\")) +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1)) + \n  labs(\n    title    = \"Revenue by state\",\n    x = \"\", # Override defaults for x and y\n    y = \"Revenue\"\n  )"
+  },
+  {
+    "objectID": "content/01_journal/01_tidyverse.html#visualize-1",
+    "href": "content/01_journal/01_tidyverse.html#visualize-1",
+    "title": "Tidyverse",
+    "section": "\n6.2 Visualize",
+    "text": "6.2 Visualize\n\nsales_by_state_year_tbl %>%\n  \n  # Set up x, y, fill\n  ggplot(aes(x = year, y = sales, fill = state)) +\n  \n  # Geometries\n  geom_col() + # Run up to here to get a stacked bar plot\n  \n  # Facet\n  facet_wrap(~ state) +\n  \n  # Formatting\n  scale_y_continuous(labels = scales::dollar_format(big.mark = \".\", \n                                                    decimal.mark = \",\", \n                                                    prefix = \"\", \n                                                    suffix = \" €\")) +\n  theme(legend.position = \"bottom\") +\n  labs(\n    title = \"Revenue by year and state\",\n    fill = \"State\" # Changes the legend name\n  )"
   }
 ]
