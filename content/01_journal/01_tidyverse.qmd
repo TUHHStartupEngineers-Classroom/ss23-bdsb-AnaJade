@@ -6,22 +6,26 @@ author: "Ana Jade"
 The goal of this first challenge is to analyze the sales per state and per year, per state. This page will explain how this analysis was done.
 
 # Load libraries
+
 ```{r}
 library(tidyverse)
 library(readxl)
 ```
 
 # Import files
+
 ```{r}
 bike_orderlines_tbl <- read_excel(path = "data/bike_orderlines.xlsx")
 ```
 
 # Examine the data
+
 ```{r}
 bike_orderlines_tbl
 ```
 
 # Split the location in city and state
+
 ```{r}
 bike_orderlines_wrangled_tbl <- bike_orderlines_tbl %>%
   separate(col    = location,
@@ -30,7 +34,9 @@ bike_orderlines_wrangled_tbl <- bike_orderlines_tbl %>%
 ```
 
 # Revenue by state
+
 ## Manipulate
+
 ```{r}
 sales_by_state_tbl <- bike_orderlines_wrangled_tbl %>%
   # Keep state and total_price columns
@@ -48,6 +54,7 @@ sales_by_state_tbl
 ```
 
 ## Visualize
+
 ```{r, fig.width=10, fig.height=7}
 sales_by_state_tbl %>%
   
@@ -73,7 +80,9 @@ sales_by_state_tbl %>%
 ```
 
 # Revenue per year per state
+
 ## Manipulate
+
 ```{r}
 sales_by_state_year_tbl <- bike_orderlines_wrangled_tbl %>%
   
@@ -96,6 +105,7 @@ sales_by_state_year_tbl
 ```
 
 ## Visualize
+
 ```{r, fig.width=10, fig.height=7}
 sales_by_state_year_tbl %>%
   
@@ -119,4 +129,3 @@ sales_by_state_year_tbl %>%
     fill = "State" # Changes the legend name
   )
 ```
-
