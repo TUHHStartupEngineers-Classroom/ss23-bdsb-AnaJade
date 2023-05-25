@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.2.269">
-
+<meta name="generator" content="quarto-1.2.335">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
-<meta name="author" content="Joschka Schwarz">
-
+<meta name="author" content="Ana Jade">
 <title>MyLabJournal - Data Acquisition</title>
 <style>
 code{white-space: pre-wrap;}
@@ -21,8 +18,70 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1.6em;
   vertical-align: middle;
 }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
-
 
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
@@ -43,7 +102,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -61,17 +122,13 @@ ul.task-list li input[type="checkbox"] {
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
-
-
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">MyLabJournal</span>
@@ -82,7 +139,7 @@ ul.task-list li input[type="checkbox"] {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html">
  <span class="menu-text">Home</span></a>
   </li>  
@@ -90,8 +147,8 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-journal" role="button" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Journal</span>
     </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">    
-        <li>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-journal">
+<li>
     <a class="dropdown-item" href="../../content/01_journal/01_tidyverse.html">
  <span class="dropdown-text">01 Tidyverse</span></a>
   </li>  
@@ -108,7 +165,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="dropdown-text">04 Data Visualization</span></a>
   </li>  
     </ul>
-  </li>
+</li>
   <li class="nav-item">
     <a class="nav-link" href="../../content/02_notes/05_class_notes.html">
  <span class="menu-text">Class notes</span></a>
@@ -118,26 +175,26 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Links</span></a>
   </li>  
 </ul>
-              <div class="quarto-toggle-container">
+<div class="quarto-toggle-container">
                   <a href="" class="quarto-color-scheme-toggle nav-link" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
               </div>
               <div id="quarto-search" class="" title="Search"></div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Contents</h2>
+   
+  <ul class="collapse">
+<li><a href="#load-libraries" id="toc-load-libraries" class="nav-link active" data-scroll-target="#load-libraries"><span class="toc-section-number">1</span>  Load libraries</a></li>
+  <li><a href="#get-some-data-via-an-api" id="toc-get-some-data-via-an-api" class="nav-link" data-scroll-target="#get-some-data-via-an-api"><span class="toc-section-number">2</span>  Get some data via an API</a></li>
+  <li><a href="#scrape-data-from-a-competitor-website" id="toc-scrape-data-from-a-competitor-website" class="nav-link" data-scroll-target="#scrape-data-from-a-competitor-website"><span class="toc-section-number">3</span>  Scrape data from a competitor website</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <h1 class="title">Data Acquisition</h1>
 </div>
 
@@ -148,7 +205,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p>Joschka Schwarz </p>
+             <p>Ana Jade </p>
           </div>
   </div>
     
@@ -157,26 +214,87 @@ ul.task-list li input[type="checkbox"] {
   </div>
   
 
-</header>
+</header><p>The goal of this second challenge is to extract information from the web. This page will explain how this was done.</p>
+<section id="load-libraries" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> Load libraries</h1>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-1_4d90c0be4fd11c89eaf640c313661dbd">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse) <span class="co"># Main Package - Loads dplyr, purrr, etc.</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">library</span>(gtrendsR)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="fu">library</span>(rvest)     <span class="co"># HTML Hacking &amp; Web Scraping</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="get-some-data-via-an-api" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> Get some data via an API</h1>
+<p>For this exercise, I chose to get the history of Google searches for Eurovision in the last 3 months. I chose to plot the results for some of my favorite entries by defining the “geo” parameter of the gtrends function.</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-2_a54395de2897a91e3dba9e1b1cf07afe">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>res <span class="ot">&lt;-</span> <span class="fu">gtrends</span>(<span class="fu">c</span>(<span class="st">"Eurovision Song Contest"</span>),</span>
+<span id="cb2-2"><a href="#cb2-2"></a>               <span class="at">geo=</span><span class="fu">c</span>(<span class="st">"DE"</span>, <span class="st">"FI"</span>, <span class="st">"NO"</span>, <span class="st">"SI"</span>, <span class="st">"HR"</span>),</span>
+<span id="cb2-3"><a href="#cb2-3"></a>               <span class="at">time =</span> <span class="st">"today 3-m"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Here are the correspond ISO codes for the countries that will be plotted: Germany (DE), Finland (FI), Norway (NO), Slovenia (SI), Croatia (HR)</p>
+<p>Here is a plot of the results:</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-3_bc79b60a5fc18395ec5f4618e5bb29c3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">plot</span>(res)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><a href="02_data_acquisition_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="02_data_acquisition_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="960"></a></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="scrape-data-from-a-competitor-website" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> Scrape data from a competitor website</h1>
+<p>Radon bikes was chosen to perform this analysis.</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-4_68bf723d157f51ab2eefdc397ce51017">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="co"># Define URL</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>url_hardtail <span class="ot">&lt;-</span> <span class="st">"https://www.radon-bikes.de/mountainbike/hardtail/"</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>html_hardtail    <span class="ot">&lt;-</span> <span class="fu">read_html</span>(url_hardtail)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The SelectorGadget tool was used to get the name of the css nodes for the bike names and bike prices.</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-5_ccf8e7dc166f756d6aa0c3a4140a1cc3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Extract bike info</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>bike_names <span class="ot">&lt;-</span> <span class="fu">list</span>(html_hardtail <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".a-heading--medium"</span>) <span class="sc">%&gt;%</span>  <span class="fu">html_text</span>())</span>
+<span id="cb5-3"><a href="#cb5-3"></a>bike_names</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [[1]]
+#&gt; [1] "JEALOUS"    "JEALOUS AL" "CRAGGER"    "ZR TEAM"    "ZR LADY"   
+#&gt; [6] "SLUSH"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>bike_prices <span class="ot">&lt;-</span> <span class="fu">list</span>(html_hardtail <span class="sc">%&gt;%</span> <span class="fu">html_nodes</span>(<span class="at">css =</span> <span class="st">".currentPrice"</span>) <span class="sc">%&gt;%</span>  <span class="fu">html_text</span>())</span>
+<span id="cb7-2"><a href="#cb7-2"></a>bike_prices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [[1]]
+#&gt;  [1] "2999" ""     "1199" ""     "1399" ""     "749"  ""     "599"  ""    
+#&gt; [11] "299"  ""</code></pre>
+</div>
+</div>
+<p>For some reason, there were some empty xml nodes that were also selected along with the bike prices. This line of code simply eliminates those empty elements.</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-6_20edcdb3155d5c877645458aae98228b">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Remove empty elements from bike_prices</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>bike_prices <span class="ot">&lt;-</span> <span class="fu">lapply</span>(bike_prices, <span class="cf">function</span>(z){ z[<span class="sc">!</span><span class="fu">is.na</span>(z) <span class="sc">&amp;</span> z <span class="sc">!=</span> <span class="st">""</span>]})</span>
+<span id="cb9-3"><a href="#cb9-3"></a>bike_prices</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>#&gt; [[1]]
+#&gt; [1] "2999" "1199" "1399" "749"  "599"  "299"</code></pre>
+</div>
+</div>
+<p>Finally, a table can be created, linking bike names and prices.</p>
+<div class="cell" data-hash="02_data_acquisition_cache/html/unnamed-chunk-7_ccd12ef3baa50b6d6b209be9f8850935">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># Create table</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>bike_infos <span class="ot">&lt;-</span> <span class="fu">map2_dfr</span>(bike_names, bike_prices, <span class="sc">~</span> <span class="fu">tibble</span>(<span class="at">Name =</span> .x, <span class="at">Price =</span> .y))</span>
+<span id="cb11-3"><a href="#cb11-3"></a>bike_infos</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
 
-<div class="callout-note callout callout-style-default callout-captioned">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
+<div data-pagedtable="false">
+  <script data-pagedtable-source="" type="application/json">
+{"columns":[{"label":["Name"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Price"],"name":[2],"type":["chr"],"align":["left"]}],"data":[{"1":"JEALOUS","2":"2999"},{"1":"JEALOUS AL","2":"1199"},{"1":"CRAGGER","2":"1399"},{"1":"ZR TEAM","2":"749"},{"1":"ZR LADY","2":"599"},{"1":"SLUSH","2":"299"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
-<div class="callout-caption-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can delete everything in here and start fresh.</p>
 </div>
 </div>
 
 
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -425,7 +543,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
-
+<script>var lightboxQuarto = GLightbox({"selector":".lightbox","closeEffect":"zoom","openEffect":"zoom","loop":true,"descPosition":"bottom"});</script>
 
 
 </body></html>
