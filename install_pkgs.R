@@ -20,3 +20,4 @@ pkgs_cran <- c(
 
 install.packages("fs")       # Install single package
 install.packages(pkgs_cran)  # Install many packages
+install.packages('gtrendsR')

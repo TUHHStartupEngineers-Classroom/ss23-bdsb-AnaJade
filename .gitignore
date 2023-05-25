@@ -44,5 +44,8 @@ vignettes/*.pdf
 .DS_Store
 
 # Data files
+scripts
+ds_data
+content/01_journal/data
 ds_data/*.*
 scripts/00_data/*.*
