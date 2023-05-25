@@ -1,37 +1,20 @@
----
-title: "Data Visualization"
-author: "Ana Jade"
----
-
-The goal of this fourth challenge is to analize and visualize COVID-19 data. This page will explain how this was done.
-
-# Load libraries
-```{r}
-# Tidyverse
+# Import libraries ----
 library(tidyverse)
-```
 
-# Load data
-```{r}
-# Load data
+# Challenge 1 -----
+# 1.1 Load data ----
 covid_data_tbl <- read_csv("https://covid.ourworldindata.org/data/owid-covid-data.csv")
-```
 
-# Challenge 1
-The goal of this first challenge is to plot the cumulative COVID-19 vases for a few countries.
-
-First you start by wrangling the data:
-```{r}
+# 1.2 Data wrangling ----
 total_cases_over_time <- covid_data_tbl %>%
   # Select appropriate columns
   select(iso_code,location, date, total_cases) %>%
   # Filter based on country
   filter(location %in% c("Germany", "United Kingdom", "France", "Spain", "United States")) %>%
   # Remove blank values
-  filter(!is.na(total_cases))
-```
-Then you plot it:
-```{r, fig.width=10, fig.height=7}
+  filter(!is.na(total_cases)) # %>%
+
+# 1.3 Plot ----
 total_cases_over_time %>%
   # Canvas
   ggplot(aes(x = date, y = total_cases, color = location)) +
@@ -54,13 +37,9 @@ total_cases_over_time %>%
     y = "Total cases",
     color = "Countries" # Legend text
   )
-```
 
-# Challenge 2
-The goal of this challenge is to view the mortality rate of every country due to COVID-19.
-
-First you start by wrangling the data:
-```{r}
+# Challenge 2 ----
+# Visualize the distribution of the mortality rate (deaths/population)
 # 2.1 Data wrangling ----
 # Example: https://www.datanovia.com/en/blog/how-to-create-a-map-using-ggplot2/
 mortality_tbl <- covid_data_tbl %>%
@@ -84,17 +63,7 @@ mortality_tbl <- covid_data_tbl %>%
   distinct()
 
 mortality_tbl
-```
 
-The title of the "location" column has to be changed to "region" to match the world map:
-```{r}
-# Change location column name to match world map
-colnames(mortality_tbl)[colnames(mortality_tbl) == "location"] = "region"
-
-```
-
-Next, you plot the results:
-```{r, fig.width=10, fig.height=6}
 # Change location column name to match world map
 colnames(mortality_tbl)[colnames(mortality_tbl) == "location"] = "region"
 
@@ -112,8 +81,5 @@ ggplot(deaths_map, aes(long, lat, group=group)) +
   labs(
     title = "Confirmed COVID-19 deaths relative to the size of the population",
     subtitle = "Around 6.2 Million confirmed COVID-19 deaths worldwide",
-    x = "",
-    y = "",
     color = "Mortality rate" # Legend text
   )
-```
